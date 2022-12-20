@@ -8,6 +8,11 @@ const TextStyle kHeading = TextStyle(
     color: Colors.white,
 );
 
+const TextStyle kBodyText = TextStyle(
+    fontSize: 22,
+    color: Colors.white,
+);
+
 const TextStyle metuverseHeading_Figma = TextStyle(
     fontFamily: 'Poppins',
     fontStyle: FontStyle.normal,
