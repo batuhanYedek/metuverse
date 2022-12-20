@@ -15,8 +15,8 @@ class BackgroundImage extends StatelessWidget {
       ).createShader(bounds), blendMode: BlendMode.darken,
       child: Container(
         decoration: const BoxDecoration(image: DecorationImage(
-          image: AssetImage('assets-images/metuverse_login_screen.png'),
-          fit: BoxFit.fill,
+          image: AssetImage('assets-images/metuverse_login_screen2.png'),
+          fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken),
         ),
         ),
