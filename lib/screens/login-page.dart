@@ -41,48 +41,93 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: 5,
+                  ),
+
+                  Container(
+                    child: Center(
+                      child: Text(
+                        'Login to your account',
+                        style: kBodyText,
+                      ),
+                    ),
+                  ),
 
                   SizedBox(
-                    height: 60,
+                    height: 30,
                   ),
 
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        TextInput(
-                          icon: FontAwesomeIcons.solidEnvelope,
-                          hint: 'Email',
-                          inputType: TextInputType.emailAddress,
-                          inputAction: TextInputAction.next,
-                          passwordObscured: false,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            LoginTextInput(
+                              icon: FontAwesomeIcons.solidEnvelope,
+                              hint: 'Email',
+                              inputType: TextInputType.emailAddress,
+                              inputAction: TextInputAction.next,
+                              passwordObscured: false,
+                            ),
+
+                            SizedBox(
+                              height: 0,
+                            ),
+
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  passwordVisibilityBool = !passwordVisibilityBool;
+                                });
+                              },
+                              icon: passwordVisibilityBool ? Icon(Icons.visibility, color: Colors.green,) : Icon(Icons.visibility_off, color: Colors.orange,)
+                            ),
+
+                            SizedBox(
+                              height: 0,
+                            ),
+
+                            LoginTextInput(
+                              icon: FontAwesomeIcons.lock,
+                              hint: 'Password',
+                              inputType: TextInputType.visiblePassword,
+                              inputAction: TextInputAction.done,
+                              passwordObscured: passwordVisibilityBool,
+                            ),
+
+                            SizedBox(
+                              height: 10,
+                            ),
+
+                            TextButton(
+                              onPressed: () {},
+                              child: Text('Forgot Password?', style: kForgetPasswordText,),
+                            ),
+
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
                         ),
 
-                        SizedBox(
-                          height: 0,
-                        ),
-
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              passwordVisibilityBool = !passwordVisibilityBool;
-                            });
-                          },
-                          icon: passwordVisibilityBool ? Icon(Icons.visibility, color: Colors.green,) : Icon(Icons.visibility_off, color: Colors.orange,)
-                        ),
-
-                        SizedBox(
-                          height: 0,
-                        ),
-
-                        TextInput(
-                          icon: FontAwesomeIcons.lock,
-                          hint: 'Password',
-                          inputType: TextInputType.visiblePassword,
-                          inputAction: TextInputAction.done,
-                          passwordObscured: passwordVisibilityBool,
-                        ),
-
+                        Column(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.lightBlue,
+                                borderRadius: BorderRadius.circular(32),
+                              ),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text('Login', style: kLoginButtonText,),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     )
                   )
@@ -100,56 +145,5 @@ class _LoginPageState extends State<LoginPage> {
   
 }
 
-class TextInput extends StatelessWidget {
-  const TextInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-    required this.passwordObscured,
-  }) : super(key: key);
 
-  final IconData icon;
-  final String hint;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
-  final bool passwordObscured;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 1),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.grey[600]!.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(32),
-        ),
-        child: TextField(
-          obscureText: passwordObscured,
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 15),
-            border: InputBorder.none,
-            hintText: hint,
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Icon(
-                  icon,
-                  color: Colors.white,
-                  size: 30,
-              ),
-            ),
-
-
-            hintStyle: kBodyText,
-          ),
-
-          style: kBodyText,
-          keyboardType: inputType,
-          textInputAction: inputAction,
-        ),
-      ),
-    );
-  }
-}
 

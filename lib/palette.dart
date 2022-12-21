@@ -13,6 +13,17 @@ const TextStyle kBodyText = TextStyle(
     color: Colors.white,
 );
 
+const TextStyle kForgetPasswordText = TextStyle(
+    fontSize: 20,
+    color: Colors.white60,
+);
+
+const TextStyle kLoginButtonText = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+);
+
 const TextStyle metuverseHeading_Figma = TextStyle(
     fontFamily: 'Poppins',
     fontStyle: FontStyle.normal,
