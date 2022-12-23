@@ -9,6 +9,7 @@ class LoginTextInput extends StatelessWidget {
     required this.inputType,
     required this.inputAction,
     required this.passwordObscured,
+    required this.enterInfo,
   }) : super(key: key);
 
   final IconData icon;
@@ -16,6 +17,9 @@ class LoginTextInput extends StatelessWidget {
   final TextInputType inputType;
   final TextInputAction inputAction;
   final bool passwordObscured;
+
+  final TextEditingController enterInfo;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,7 @@ class LoginTextInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(32),
         ),
         child: TextField(
+          controller: enterInfo,
           obscureText: passwordObscured,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 15),
